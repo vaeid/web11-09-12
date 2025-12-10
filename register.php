@@ -11,8 +11,8 @@
     <?php
     include("topbar.php");
     ?>
-    <form action="register_controll.php" method="post">
-        <input type="text" name="username" placeholder="نام کاربری"><br>
+    <form action="register_controll.php" method="post" id="register_form">
+        <input type="text" name="username" id="username" placeholder="نام کاربری"><br>
         <input type="text" name="f_name" placeholder="نام"><br>
         <input type="text" name="l_name" placeholder="نام خانوادگی"><br>
         <select name="year">
@@ -53,17 +53,48 @@
             }
             ?>
         </select>
-        <input type="password" name="pass1" placeholder="پسورد را وارد کنید"><br>
-        <input type="password" name="pass2" placeholder="تکرار پسور ">
+        <input type="password" name="pass1" id="pass1" placeholder="پسورد را وارد کنید"><br>
+        <input type="password" name="pass2" id="pass2" placeholder="تکرار پسور ">
         <br>
         <p>40 + 5 ?</p>
-        <input type="number" name="captcha" placeholder="جواب سوال را وارد کنید">
+        <input type="number" name="captcha" id="captcha" placeholder="جواب سوال را وارد کنید">
         <input type="number" name="swi">
-        <button type="submit">عضویت</button>
     </form>
+    <button onclick="submit_form()">عضویت</button>
+
     <?php
     include("footer.php");
     ?>
 </body>
+<script>
+    function submit_form() {
+        var captcha = document.getElementById("captcha").value;
+        if (captcha == 45) {
+            var username = document.getElementById("username").value;
+            if (username == '') {
+                alert('نام کاربری را وارد کنید');
+            } else {
+                var pass1 = document.getElementById("pass1").value;
+                var pass2 = document.getElementById("pass2").value;
+                if (pass1 != '' && pass1 == pass2) {
+
+                    document.getElementById("register_form").submit();
+
+                    console.log('ok');
+                } else {
+                    alert('پسورد و تکرار پسورد را به درستی وارد کنید');
+
+                }
+
+            }
+        } else {
+            alert('سوال امنیتی اشتباه است');
+
+        }
+
+
+
+    }
+</script>
 
 </html>
