@@ -68,6 +68,7 @@
 </body>
 <script>
     function submit_form() {
+
         var captcha = document.getElementById("captcha").value;
         if (captcha == 45) {
             var username = document.getElementById("username").value;
@@ -82,7 +83,7 @@
 
                     console.log('ok');
                 } else {
-                    alert('پسورد و تکرار پسورد را به درستی وارد کنید');
+                    alert('پسورد و تکرار پسورد را به درستی وارد کنید!');
 
                 }
 
